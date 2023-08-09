@@ -3,6 +3,7 @@ package com.mgsystems.dscommerce.entities;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
@@ -21,6 +22,7 @@ import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
+@SuppressWarnings("serial")
 @Entity
 @Table(name= "tb_user")
 public class User implements UserDetails{
@@ -44,7 +46,7 @@ public class User implements UserDetails{
 				joinColumns = @JoinColumn(name= "user_id"),
 				inverseJoinColumns = @JoinColumn(name ="role_id")
 			)
-	private Set<Role> roles;
+	private Set<Role> roles = new HashSet<>();
 	
 	public User() {
 		
