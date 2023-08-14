@@ -16,7 +16,8 @@ public class OrderDTO {
 	
 	private ClientDTO client;
 	private PaymentDTO payment;
-	private List<OrderItemDTO> itens= new ArrayList<>();
+	
+	private List<OrderItemDTO> items= new ArrayList<>();
 	
 	public OrderDTO(Long id, Instant moment, OrderStatus status, ClientDTO client, PaymentDTO payment) {
 		this.id = id;
@@ -33,9 +34,9 @@ public class OrderDTO {
 		client = new ClientDTO(entity.getClient());
 		payment = (entity.getPayment() == null) ? null : new PaymentDTO(entity.getPayment()); 
 		
-		for(OrderItem item : entity.getItens()) {
+		for(OrderItem item : entity.getItems()) {
 			
-			itens.add(new OrderItemDTO(item));
+			items.add(new OrderItemDTO(item));
 			
 		}
 	}
@@ -55,15 +56,15 @@ public class OrderDTO {
 	public PaymentDTO getPayment() {
 		return payment;
 	}
-	public List<OrderItemDTO> getItens() {
-		return itens;
+	public List<OrderItemDTO> getItems() {
+		return items;
 	}
 	
 	public Double getTotal() {
 		
 		double sum= 0.0;
 		
-		for(OrderItemDTO item : itens) {
+		for(OrderItemDTO item : items) {
 			
 			sum += item.getSubTotal();
 			
