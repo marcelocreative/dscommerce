@@ -60,6 +60,7 @@ public class User implements UserDetails{
 		this.birthDate = birthDate;
 		this.password = password;
 	}
+	
 
 	public Long getId() {
 		return id;
